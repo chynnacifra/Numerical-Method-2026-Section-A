@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Numerical Analysis Laboratory</title>
+  <style>
+    :root {
+      --ink: #182230;
+      --muted: #617083;
+      --paper: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe3ec;
+      --blue: #2f67d8;
+      --green: #168f4d;
+      --orange: #e88808;
+      --red: #d93d3d;
+      --violet: #7436d8;
+      --shadow: 0 18px 45px rgba(31, 48, 70, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    .hero {
+      padding: 68px 0 52px;
+      color: white;
+      background:
+        linear-gradient(120deg, rgba(20, 34, 55, .97), rgba(34, 75, 132, .9)),
+        repeating-linear-gradient(135deg, transparent 0 22px, rgba(255,255,255,.035) 22px 24px);
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #acd0ff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.15; margin: 0; }
+    h1 { max-width: 760px; font-size: clamp(2.3rem, 6vw, 4.8rem); letter-spacing: -.04em; }
+    .hero p { max-width: 720px; margin: 22px 0 0; color: #dbe9fb; font-size: 1.08rem; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .nav a {
+      padding: 8px 13px;
+      color: white;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      font-size: .88rem;
+      text-decoration: none;
+    }
+    .nav a:hover { background: rgba(255,255,255,.13); }
+    main { padding: 44px 0 80px; }
+    .intro-grid, .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card, .exercise {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .card { padding: 25px; }
+    .card h3 { margin-bottom: 10px; font-size: 1.08rem; }
+    .card p { margin: 0; color: var(--muted); }
+    section { scroll-margin-top: 24px; }
+    .section-heading { margin: 64px 0 20px; }
+    .section-heading h2 { font-size: clamp(1.7rem, 3vw, 2.55rem); }
+    .section-heading p { max-width: 720px; margin: 9px 0 0; color: var(--muted); }
+    .exercise { overflow: hidden; margin-top: 28px; }
+    .exercise-head { padding: 25px 28px; color: white; }
+    .exercise-head.blue { background: var(--blue); }
+    .exercise-head.green { background: var(--green); }
+    .exercise-head.violet { background: var(--violet); }
+    .exercise-head h3 { font-size: 1.55rem; }
+    .exercise-head p { margin: 7px 0 0; opacity: .9; }
+    .exercise-body { padding: 28px; }
+    .details { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .details h4 { margin: 0 0 7px; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .details p { margin: 0; }
+    .formula {
+      display: inline-block;
+      margin: 3px 0 13px;
+      padding: 11px 16px;
+      color: #162d4f;
+      background: #edf3fb;
+      border-left: 4px solid var(--blue);
+      font-family: Georgia, serif;
+      font-size: 1.3rem;
+    }
+    .green-border { border-left-color: var(--green); }
+    .violet-border { border-left-color: var(--violet); }
+    .result-layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); gap: 28px; margin-top: 28px; align-items: start; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    th { color: #38506d; background: #f1f5f9; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    .graph { margin: 0; padding: 10px; background: #fbfcfe; border: 1px solid var(--line); }
+    .graph img { display: block; width: 100%; height: auto; }
+    figcaption { padding: 8px 4px 1px; color: var(--muted); font-size: .8rem; }
+    .answer {
+      margin-top: 27px;
+      padding: 17px 19px;
+      background: #f7fafc;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--orange);
+    }
+    .answer strong { display: block; margin-bottom: 4px; }
+    .interpretation { margin: 17px 0 0; color: var(--muted); }
+    .status { margin: 18px 0 0; padding: 12px 15px; color: #8b4a00; background: #fff7e7; border: 1px solid #f3d49b; }
+    .status.ready { color: #136438; background: #ecfaf1; border-color: #b8e4c8; }
+    footer { padding: 25px 0 45px; color: var(--muted); font-size: .82rem; text-align: center; }
+    @media (max-width: 850px) {
+      .intro-grid, .summary-grid, .details, .result-layout { grid-template-columns: 1fr; }
+      .result-layout { gap: 20px; }
+      .exercise-body { padding: 20px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .hero { padding: 46px 0 38px; }
+      h1 { font-size: 2.5rem; }
+      .nav a { font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Laboratory exercise / numerical methods</p>
+      <h1>Three ways to watch mathematics converge.</h1>
+      <p>This dashboard turns the Python calculations into a readable record of approximation: compound periods approach <em>e</em>, a difference quotient approaches <em>ln(a)</em>, and a Taylor series approaches <em>e<sup>x</sup></em>.</p>
+      <nav class="nav" aria-label="Dashboard sections">
+        <a href="#overview">Overview</a>
+        <a href="#exercise-1">Exercise 1</a>
+        <a href="#exercise-2">Exercise 2</a>
+        <a href="#exercise-3">Exercise 3</a>
+        <a href="#summary">Results summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="overview">
+      <div class="section-heading">
+        <h2>Overview</h2>
+        <p>The project uses small, transparent numerical experiments to connect formulas with computation. Each exercise changes a parameter, records the result, and makes the limiting behavior visible.</p>
+      </div>
+      <div class="intro-grid">
+        <article class="card"><h3>What the project is about</h3><p>Implementing mathematical formulas in Python, then presenting the calculated values and graphs in a dashboard that can be read without opening the source code.</p></article>
+        <article class="card"><h3>What the exercises demonstrate</h3><p>Convergence is not just an abstract limit. The tables show the numerical path, while the plots show how quickly the approximation improves.</p></article>
+        <article class="card"><h3>Why it matters</h3><p>These ideas support compound growth models, logarithmic derivatives, exponential functions, scientific computing, and decisions about numerical accuracy.</p></article>
+      </div>
+      <div id="status" class="status" role="status">Loading exercise data...</div>
+    </section>
+
+    <section id="exercise-1">
+      <div class="section-heading"><h2>Exercise 1</h2><p>Compound more frequently and observe the value move toward Euler's number.</p></div>
+      <article class="exercise">
+        <div class="exercise-head blue"><h3>Convergence of (1 + 1/n)<sup>n</sup> to e</h3><p>Given compounding frequencies from yearly through nanosecond.</p></div>
+        <div class="exercise-body">
+          <div class="details">
+            <div><h4>Problem</h4><p>Calculate the compound-frequency approximation for each given number of periods.</p></div>
+            <div><h4>Given information</h4><p><strong>Variable:</strong> <em>n</em>, the number of compounding periods per year.<br><strong>Reference:</strong> <em>e</em> = 2.718281828459...</p></div>
+            <div><h4>Formula</h4><div class="formula">(1 + 1/n)<sup>n</sup></div><p>As <em>n</em> increases, the expression approaches the constant <em>e</em>.</p></div>
+            <div><h4>Method</h4><p>The script evaluates the formula for every listed frequency and calculates the absolute error from <em>e</em>.</p></div>
+          </div>
+          <div class="result-layout">
+            <div id="exercise-1-table" class="table-wrap"></div>
+            <figure class="graph"><img src="results/exercise_1.png" alt="Exercise 1 value and absolute-error bar charts"><figcaption>Value and absolute error by compounding frequency.</figcaption></figure>
+          </div>
+          <div id="exercise-1-answer" class="answer"></div>
+          <p id="exercise-1-interpretation" class="interpretation"></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="exercise-2">
+      <div class="section-heading"><h2>Exercise 2</h2><p>Reduce the step size and observe a difference quotient settle at a logarithm.</p></div>
+      <article class="exercise">
+        <div class="exercise-head green"><h3>(a<sup>h</sup> - 1)/h settling to ln(a)</h3><p>Three bases are compared as the dimensionless step h shrinks.</p></div>
+        <div class="exercise-body">
+          <div class="details">
+            <div><h4>Problem</h4><p>Evaluate the difference quotient for each base and decreasing value of <em>h</em>.</p></div>
+            <div><h4>Given information</h4><p><strong>Bases:</strong> <em>a</em> = 2, 2.71828..., and 3.<br><strong>Tolerance:</strong> 10<sup>-6</sup>.</p></div>
+            <div><h4>Formula</h4><div class="formula green-border">(a<sup>h</sup> - 1)/h</div><p>The limit as <em>h</em> approaches zero is <em>ln(a)</em>.</p></div>
+            <div><h4>Method</h4><p>The script compares each calculated quotient with its reference value <em>ln(a)</em> and records the absolute error.</p></div>
+          </div>
+          <div class="result-layout">
+            <div id="exercise-2-table" class="table-wrap"></div>
+            <figure class="graph"><img src="results/exercise_2.png" alt="Exercise 2 grouped bar chart of difference quotients"><figcaption>Bars show the difference quotient; dashed lines show ln(a).</figcaption></figure>
+          </div>
+          <div id="exercise-2-answer" class="answer"></div>
+          <p id="exercise-2-interpretation" class="interpretation"></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="exercise-3">
+      <div class="section-heading"><h2>Exercise 3</h2><p>Add Taylor-series terms until the exponential approximation reaches floating-point precision.</p></div>
+      <article class="exercise">
+        <div class="exercise-head violet"><h3>e<sup>x</sup> as a Taylor series</h3><p>The reference case uses x = 1 and sums through 10,000 terms.</p></div>
+        <div class="exercise-body">
+          <div class="details">
+            <div><h4>Problem</h4><p>Calculate partial sums of the exponential Taylor series for increasing numbers of terms.</p></div>
+            <div><h4>Given information</h4><p><strong>Input:</strong> <em>x</em> = 1.<br><strong>Maximum:</strong> 10,000 Taylor-series terms.</p></div>
+            <div><h4>Formula</h4><div class="formula violet-border">e<sup>x</sup> = &Sigma;<sub>n=0</sub><sup>&infin;</sup> x<sup>n</sup>/n!</div><p>Each added term contributes x<sup>n</sup>/n! to the partial sum.</p></div>
+            <div><h4>Method</h4><p>The implementation updates each term from the previous one, avoiding repeated factorial calculation, and records the error from e<sup>x</sup>.</p></div>
+          </div>
+          <div class="result-layout">
+            <div id="exercise-3-table" class="table-wrap"></div>
+            <figure class="graph"><img src="results/exercise_3.png" alt="Exercise 3 partial sums and error graph"><figcaption>Partial sums and absolute error for selected numbers of terms.</figcaption></figure>
+          </div>
+          <div id="exercise-3-answer" class="answer"></div>
+          <p id="exercise-3-interpretation" class="interpretation"></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="summary">
+      <div class="section-heading"><h2>Results summary</h2><p>The important limiting results from all three exercises.</p></div>
+      <div id="summary-grid" class="summary-grid"></div>
+    </section>
+  </main>
+  <footer>Numerical Analysis Laboratory &middot; Data loaded from the Python exercise outputs</footer>
+
+  <script>
+    const formatNumber = (value, digits = 8) => Number(value).toFixed(digits);
+    const formatScientific = value => Number(value).toExponential(3);
+    const table = (headers, rows) => `<table><thead><tr>${headers.map(header => `<th>${header}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+
+    function renderExercise1(data) {
+      const rows = data.results.map(item => [item.frequency, item.n.toLocaleString(), formatNumber(item.value, 10), formatScientific(item.absolute_error)]);
+      document.querySelector("#exercise-1-table").innerHTML = table(["Frequency", "n", "Value", "Absolute error"], rows);
+      document.querySelector("#exercise-1-answer").innerHTML = `<strong>Final answer</strong>The values approach e = ${formatNumber(data.final_answer.value, 12)} as n increases.`;
+      document.querySelector("#exercise-1-interpretation").textContent = data.interpretation;
+    }
+
+    function renderExercise2(data) {
+      const hValues = data.inputs.h_values;
+      const rows = hValues.map((h, index) => [
+        h.toExponential(0),
+        ...data.series.map(series => formatNumber(series.values[index].value, 8)),
+      ]);
+      document.querySelector("#exercise-2-table").innerHTML = table(["h", "a = 2", "a = e", "a = 3"], rows);
+      const limits = Object.entries(data.final_answer.limits).map(([base, value]) => `ln(${Number(base).toPrecision(6)}) = ${formatNumber(value, 8)}`).join("; ");
+      document.querySelector("#exercise-2-answer").innerHTML = `<strong>Final answer</strong>${limits}. The stated tolerance is ${data.tolerance}.`;
+      document.querySelector("#exercise-2-interpretation").textContent = data.interpretation;
+    }
+
+    function renderExercise3(data) {
+      const rows = data.results.map(item => [item.terms.toLocaleString(), formatNumber(item.partial_sum, 12), formatScientific(item.absolute_error), item.correct_decimal_digits]);
+      document.querySelector("#exercise-3-table").innerHTML = table(["Terms N", "Partial sum", "Absolute error", "Correct digits"], rows);
+      document.querySelector("#exercise-3-answer").innerHTML = `<strong>Final answer</strong>For x = ${data.final_answer.x}, e<sup>x</sup> &asymp; ${formatNumber(data.final_answer.value, 12)} after ${data.maximum_terms.toLocaleString()} terms.`;
+      document.querySelector("#exercise-3-interpretation").textContent = data.interpretation;
+    }
+
+    function renderSummary(exercise1, exercise2, exercise3) {
+      const cards = [
+        ["01", "Compound-frequency limit", `n increases and (1 + 1/n)<sup>n</sup> approaches ${formatNumber(exercise1.final_answer.value, 8)}.`],
+        ["02", "Logarithmic limit", `The difference quotient approaches ln(a) for a = 2, e, and 3.`],
+        ["03", "Taylor-series limit", `For x = 1, the partial sum approaches ${formatNumber(exercise3.final_answer.value, 8)}.`],
+      ];
+      document.querySelector("#summary-grid").innerHTML = cards.map(card => `<article class="card"><h3>${card[0]} &middot; ${card[1]}</h3><p>${card[2]}</p></article>`).join("");
+    }
+
+    async function loadDashboard() {
+      try {
+        const files = ["results/exercise_1.json", "results/exercise_2.json", "results/exercise_3.json"];
+        const responses = await Promise.all(files.map(file => fetch(file)));
+        if (responses.some(response => !response.ok)) throw new Error("One or more JSON files could not be loaded.");
+        const [exercise1, exercise2, exercise3] = await Promise.all(responses.map(response => response.json()));
+        renderExercise1(exercise1);
+        renderExercise2(exercise2);
+        renderExercise3(exercise3);
+        renderSummary(exercise1, exercise2, exercise3);
+        const status = document.querySelector("#status");
+        status.textContent = "Exercise data loaded from results/*.json. The tables and summary are ready.";
+        status.classList.add("ready");
+      } catch (error) {
+        const status = document.querySelector("#status");
+        status.textContent = "The dashboard could not load the JSON files. Run a local server in this folder, then open dashboard.html through that server.";
+        console.error(error);
+      }
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+{
+  "exercise": 2,
+  "formula": "(a^h - 1) / h",
+  "inputs": {
+    "bases": [
+      2.0,
+      2.718281828459045,
+      3.0
+    ],
+    "h_values": [
+      0.1,
+      0.01,
+      0.001,
+      0.0001,
+      1e-05,
+      1e-06,
+      1e-07
+    ]
+  },
+  "variables": {
+    "a": "positive base",
+    "h": "dimensionless step approaching zero"
+  },
+  "units": {
+    "a": "dimensionless",
+    "h": "dimensionless",
+    "result": "dimensionless"
+  },
+  "tolerance": 1e-06,
+  "final_answer": {
+    "formula": "ln(a)",
+    "limits": {
+      "2.0": 0.6931471805599453,
+      "2.718281828459045": 1.0,
+      "3.0": 1.0986122886681098
+    }
+  },
+  "interpretation": "As h approaches zero, the difference quotient approaches ln(a).",
+  "series": [
+    {
+      "base": 2.0,
+      "limit": 0.6931471805599453,
+      "limit_formula": "ln(a)",
+      "values": [
+        {
+          "h": 0.1,
+          "value": 0.7177346253629315,
+          "absolute_error": 0.024587444802986247,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.01,
+          "value": 0.695555005671881,
+          "absolute_error": 0.002407825111935713,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.001,
+          "value": 0.6933874625806324,
+          "absolute_error": 0.00024028202068715476,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.0001,
+          "value": 0.693171203765692,
+          "absolute_error": 2.4023205746681597e-05,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-05,
+          "value": 0.6931495828305653,
+          "absolute_error": 2.4022706199833266e-06,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-06,
+          "value": 0.6931474207865077,
+          "absolute_error": 2.4022656242017604e-07,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-07,
+          "value": 0.6931472045825965,
+          "absolute_error": 2.4022651201605072e-08,
+          "h_unit": "dimensionless step"
+        }
+      ],
+      "base_unit": "dimensionless"
+    },
+    {
+      "base": 2.718281828459045,
+      "limit": 1.0,
+      "limit_formula": "ln(a)",
+      "values": [
+        {
+          "h": 0.1,
+          "value": 1.0517091807564762,
+          "absolute_error": 0.051709180756476236,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.01,
+          "value": 1.0050167084168058,
+          "absolute_error": 0.005016708416805793,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.001,
+          "value": 1.0005001667083417,
+          "absolute_error": 0.0005001667083417427,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.0001,
+          "value": 1.0000500016667084,
+          "absolute_error": 5.0001666708432424e-05,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-05,
+          "value": 1.0000050000166667,
+          "absolute_error": 5.000016666700802e-06,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-06,
+          "value": 1.0000005000001668,
+          "absolute_error": 5.000001668253873e-07,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-07,
+          "value": 1.0000000500000017,
+          "absolute_error": 5.0000001694527896e-08,
+          "h_unit": "dimensionless step"
+        }
+      ],
+      "base_unit": "dimensionless"
+    },
+    {
+      "base": 3.0,
+      "limit": 1.0986122886681098,
+      "limit_formula": "ln(a)",
+      "values": [
+        {
+          "h": 0.1,
+          "value": 1.1612317403390444,
+          "absolute_error": 0.06261945167093463,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.01,
+          "value": 1.104669193785359,
+          "absolute_error": 0.006056905117249212,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.001,
+          "value": 1.0992159842040528,
+          "absolute_error": 0.0006036955359429719,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 0.0001,
+          "value": 1.0986726383261596,
+          "absolute_error": 6.034965804979642e-05,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-05,
+          "value": 1.0986183234350135,
+          "absolute_error": 6.034766903750821e-06,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-06,
+          "value": 1.098612892142811,
+          "absolute_error": 6.034747013217157e-07,
+          "h_unit": "dimensionless step"
+        },
+        {
+          "h": 1e-07,
+          "value": 1.0986123490155602,
+          "absolute_error": 6.034745037020173e-08,
+          "h_unit": "dimensionless step"
+        }
+      ],
+      "base_unit": "dimensionless"
+    }
+  ],
+  "graph": {
+    "path": "exercise_2.png",
+    "type": "grouped bar chart",
+    "x": "h values",
+    "y": "(a^h - 1) / h",
+    "reference_lines": "ln(a) for each base"
+  },
+  "plot": "exercise_2.png"
+}

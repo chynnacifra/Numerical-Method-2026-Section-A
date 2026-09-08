@@ -1,0 +1,124 @@
+{
+  "exercise": 3,
+  "formula": "sum(n=0 to infinity) x^n / n!",
+  "inputs": {
+    "x": 1.0,
+    "maximum_terms": 10000,
+    "sample_terms": [
+      1,
+      2,
+      3,
+      5,
+      10,
+      20,
+      50,
+      100,
+      1000,
+      10000
+    ]
+  },
+  "variables": {
+    "x": "input to e^x",
+    "n": "Taylor-series term index"
+  },
+  "units": {
+    "x": "dimensionless",
+    "n": "Taylor-series terms",
+    "partial_sum": "dimensionless"
+  },
+  "x": 1.0,
+  "maximum_terms": 10000,
+  "reference_value": 2.718281828459045,
+  "final_answer": {
+    "formula": "e^x",
+    "x": 1.0,
+    "value": 2.718281828459045
+  },
+  "interpretation": "The Taylor partial sum approaches e^x quickly, then reaches floating-point precision limits.",
+  "results": [
+    {
+      "terms": 1,
+      "partial_sum": 1.0,
+      "absolute_error": 1.718281828459045,
+      "correct_decimal_digits": 0,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 2,
+      "partial_sum": 2.0,
+      "absolute_error": 0.7182818284590451,
+      "correct_decimal_digits": 0,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 3,
+      "partial_sum": 2.5,
+      "absolute_error": 0.2182818284590451,
+      "correct_decimal_digits": 0,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 5,
+      "partial_sum": 2.708333333333333,
+      "absolute_error": 0.009948495125712054,
+      "correct_decimal_digits": 2,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 10,
+      "partial_sum": 2.7182815255731922,
+      "absolute_error": 3.0288585284310443e-07,
+      "correct_decimal_digits": 6,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 20,
+      "partial_sum": 2.7182818284590455,
+      "absolute_error": 4.440892098500626e-16,
+      "correct_decimal_digits": 15,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 50,
+      "partial_sum": 2.7182818284590455,
+      "absolute_error": 4.440892098500626e-16,
+      "correct_decimal_digits": 15,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 100,
+      "partial_sum": 2.7182818284590455,
+      "absolute_error": 4.440892098500626e-16,
+      "correct_decimal_digits": 15,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 1000,
+      "partial_sum": 2.7182818284590455,
+      "absolute_error": 4.440892098500626e-16,
+      "correct_decimal_digits": 15,
+      "terms_unit": "Taylor-series terms"
+    },
+    {
+      "terms": 10000,
+      "partial_sum": 2.7182818284590455,
+      "absolute_error": 4.440892098500626e-16,
+      "correct_decimal_digits": 15,
+      "terms_unit": "Taylor-series terms"
+    }
+  ],
+  "graph": {
+    "path": "exercise_3.png",
+    "type": "bar chart and log-log line chart",
+    "panels": [
+      "partial sums",
+      "absolute error versus number of terms"
+    ],
+    "x": "number of terms N",
+    "y": [
+      "partial sum",
+      "absolute error"
+    ]
+  },
+  "plot": "exercise_3.png"
+}

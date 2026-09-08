@@ -1,0 +1,145 @@
+{
+  "exercise": 1,
+  "formula": "(1 + 1/n)^n",
+  "inputs": {
+    "frequencies": [
+      "yearly",
+      "twice a year",
+      "quarterly",
+      "monthly",
+      "weekly",
+      "daily",
+      "hourly",
+      "every minute",
+      "every second",
+      "every millisecond",
+      "every microsecond",
+      "every nanosecond"
+    ]
+  },
+  "variables": {
+    "n": "number of compounding periods per year"
+  },
+  "units": {
+    "n": "compounding periods per year",
+    "value": "dimensionless"
+  },
+  "reference_value": 2.718281828459045,
+  "final_answer": {
+    "name": "e",
+    "value": 2.718281828459045
+  },
+  "interpretation": "Increasing n makes the compound-interest expression approach e.",
+  "results": [
+    {
+      "frequency": "yearly",
+      "n": 1,
+      "value": 2.0,
+      "absolute_error": 0.7182818284590451,
+      "error_reference": 1.3591409142295225,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "twice a year",
+      "n": 2,
+      "value": 2.25,
+      "absolute_error": 0.4682818284590451,
+      "error_reference": 0.6795704571147613,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "quarterly",
+      "n": 4,
+      "value": 2.44140625,
+      "absolute_error": 0.2768755784590451,
+      "error_reference": 0.33978522855738064,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "monthly",
+      "n": 12,
+      "value": 2.613035290224678,
+      "absolute_error": 0.10524653823436703,
+      "error_reference": 0.11326174285246021,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "weekly",
+      "n": 52,
+      "value": 2.6925969544371777,
+      "absolute_error": 0.025684874021867365,
+      "error_reference": 0.026137325273644665,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "daily",
+      "n": 365,
+      "value": 2.7145674820218746,
+      "absolute_error": 0.0037143464371705015,
+      "error_reference": 0.0037236737376151303,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "hourly",
+      "n": 8760,
+      "value": 2.718126691620452,
+      "absolute_error": 0.00015513683859325056,
+      "error_reference": 0.00015515307240063044,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "every minute",
+      "n": 525600,
+      "value": 2.718279242579015,
+      "absolute_error": 2.5858800301037377e-06,
+      "error_reference": 2.585884540010507e-06,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "every second",
+      "n": 31536000,
+      "value": 2.718281785360971,
+      "absolute_error": 4.309807399849319e-08,
+      "error_reference": 4.309807566684178e-08,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "every millisecond",
+      "n": 31536000000,
+      "value": 2.7182818284159476,
+      "absolute_error": 4.3097525548319027e-11,
+      "error_reference": 4.309807566684178e-11,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "every microsecond",
+      "n": 31536000000000,
+      "value": 2.7182818284590016,
+      "absolute_error": 4.3520742565306136e-14,
+      "error_reference": 4.309807566684179e-14,
+      "n_unit": "compounding periods per year"
+    },
+    {
+      "frequency": "every nanosecond",
+      "n": 31536000000000000,
+      "value": 2.718281828459045,
+      "absolute_error": 0.0,
+      "error_reference": 4.309807566684179e-17,
+      "n_unit": "compounding periods per year"
+    }
+  ],
+  "graph": {
+    "path": "exercise_1.png",
+    "type": "bar charts",
+    "panels": [
+      "value per compounding period",
+      "absolute error on a log scale"
+    ],
+    "x": "compounding frequency",
+    "y": [
+      "(1 + 1/n)^n",
+      "absolute error"
+    ]
+  },
+  "plot": "exercise_1.png"
+}
